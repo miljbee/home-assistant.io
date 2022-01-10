@@ -27,6 +27,7 @@ To enable it, add the following lines to your `configuration.yaml` file:
 # Example configuration.yaml
 sensor:
   - platform: sql
+    scan_interval: 300
     queries:
       - name: Sun state
         query: "SELECT * FROM states WHERE entity_id = 'sun.sun' ORDER BY state_id DESC LIMIT 1;"
@@ -40,6 +41,11 @@ db_url:
   required: false
   default: "Defaults to the default recorder `db_url` (not the current `db_url` of recorder)."
   type: string
+scan_interval:
+  description: delay in seconds between calls
+  required: false
+  default: 30
+  type: integer
 queries:
   description: List of your queries.
   required: true
